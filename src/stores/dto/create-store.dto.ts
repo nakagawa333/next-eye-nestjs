@@ -5,4 +5,5 @@ export class CreateStoreDto {
     content: string;
     lat: number;
     lng: number;
+    tags: string[];
 }

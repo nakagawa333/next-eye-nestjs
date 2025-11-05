@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { StoresTagsEntity } from 'src/storeTags/entities/stores-tags.entity';
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('stores')
 export class StoresEntity extends BaseEntity {
@@ -28,4 +29,8 @@ export class StoresEntity extends BaseEntity {
 
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     updatedAt: Date;
+
+    //中間テーブルとのリレーション（1対多）
+    @OneToMany(() => StoresTagsEntity, (storeTag) => storeTag.store)
+    storeTags: StoresTagsEntity[];
 }

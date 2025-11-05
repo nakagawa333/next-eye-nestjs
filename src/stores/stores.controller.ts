@@ -27,6 +27,7 @@ export class StoresController {
       content: reqestCreateStoreDto.content,
       lat: addressRes.lat,
       lng: addressRes.lng,
+      tags: reqestCreateStoreDto.tags,
     };
     const result = await this.storesService.create(createStoreDto);
     return result;
